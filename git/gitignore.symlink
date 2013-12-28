@@ -1,0 +1,19 @@
+# because I use a mac
+.DS_Store
+profile
+
+# because I use vim for editing
+*.swm
+*.swn
+*.swo
+*.swp
+
+# exuberant ctags
+TAGS
+
+# because I use git-svn rather than svn
+.svn
+
+# xcode noise
+*.pbxuser
+*.mode1v3
