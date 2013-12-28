@@ -3,6 +3,8 @@
 The aim is to make these portable across both OSX and ubuntu which are the two
 places I seem to find myself working in most often.
 
+There's a Vagrantfile in there too for easy testing in ubuntu.
+
 ## install
 
 Run this:
