@@ -36,3 +36,15 @@ of [dotfiles](https://raw.github.com/holman/dotfiles). Most of the vim stuff was
 inspired by watching Gary Bernhardt's Destroy All Software screencasts, copying
 from his [dotfiles](https://github.com/garybernhardt/dotfiles) - and actaully
 understanding most of what's in there :)
+
+## todo
+
+- bash stuff (bash_profile, bash_rc)
+- git-completion
+- vim
+- vim plugins
+- powerline in vim
+- ruby stuff (rdebugrc, irbrc, gemrc, autotest)
+- tmux
+- vagrant
+- run_tags / ctags
