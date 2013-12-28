@@ -1,0 +1,83 @@
+# Path ----------------------------------------------------------
+export PATH=/usr/local/bin:/usr/local/sbin:/opt/local/bin:$PATH
+
+# Misc -------------------------------------------------------------
+export LANG=en_GB.UTF-8                                     # set the locale
+shopt -s checkwinsize                                       # After each command, checks the windows size and changes lines and columns
+set +o ignoreeof                                            # enable <C-d> logout
+
+# Colors ----------------------------------------------------------
+export TERM=xterm-256color
+export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'        # color settings for grep
+export CLICOLOR=1                                           # ls command to use colors (OSX and FreeBSD specific)
+
+# colors for use in interactive shell or scripts
+export COLOR_NC='\e[0m'                                     # No Color
+export COLOR_WHITE='\e[1;37m'
+export COLOR_BLACK='\e[0;30m'
+export COLOR_BLUE='\e[0;34m'
+export COLOR_LIGHT_BLUE='\e[1;34m'
+export COLOR_GREEN='\e[0;32m'
+export COLOR_LIGHT_GREEN='\e[1;32m'
+export COLOR_CYAN='\e[0;36m'
+export COLOR_LIGHT_CYAN='\e[1;36m'
+export COLOR_RED='\e[0;31m'
+export COLOR_LIGHT_RED='\e[1;31m'
+export COLOR_PURPLE='\e[0;35m'
+export COLOR_LIGHT_PURPLE='\e[1;35m'
+export COLOR_BROWN='\e[0;33m'
+export COLOR_YELLOW='\e[1;33m'
+export COLOR_GRAY='\e[1;30m'
+export COLOR_LIGHT_GRAY='\e[0;37m'
+
+# Window Title ----------------------------------------------------------
+# PROMPT_COMMAND is ececuted just before bash displays the prompt
+export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*} ${PWD}"; echo -ne "\007"'  # user@host path
+
+# Prompt ----------------------------------------------------------
+# export PS1="\[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"                         # (Primary) Prompt with only a path
+# export PS1="\[${COLOR_GREEN}\]\w\$(__git_ps1) > \[${COLOR_NC}\]"            # Prompt with path and git branch if in git project
+# export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Prompt with user, host, and path
+
+# Prompt with git info and first letter for all path components except the last
+# from: http://stackoverflow.com/questions/3497885/code-challenge-bash-prompt-path-shortener
+_dir_chomp() {
+    local p=${1/#$HOME/\~} b s
+    s=${#p}
+    while [[ $p != ${p//\/} ]]&&(($s>$2))
+    do
+        p=${p#/}
+        [[ $p =~ \.?. ]]
+        b=$b/${BASH_REMATCH[0]}
+        p=${p#*/}
+        ((s=${#b}+${#p}))
+    done
+    echo ${b/\/~/\~}${b+/}$p
+}
+export PS1='\[\033[01;32m\]\u:\[\033[01;34m\] $(_dir_chomp "$(pwd)" 20)\[\033[01;37m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+#export PS1="\[${COLOR_LIGHT_GREEN}\]\u:\[${COLOR_LIGHT_BLUE}\] $(_dir_chomp "$(pwd)" 20)\[${COLOR_LIGHT_GRAY}\]$(__git_ps1)\[${COLOR_LIGHT_BLUE}\] \$\[${COLOR_NC}\] "
+
+export PS2='> '    # Secondary prompt
+export PS3='#? '   # Prompt 3
+export PS4='+'     # Prompt 4
+
+# Bash Completion -------------------------------------------------------------
+# actually, these are readline settings
+bind "set completion-ignore-case on"                        # note: bind used instead of sticking these in .inputrc
+bind "set bell-style none"                                  # no bell
+bind "set show-all-if-ambiguous On"                         # show list automatically, without double tab
+
+# History ----------------------------------------------------------
+shopt -s histappend                                         # append history
+shopt -s cmdhist                                            # multiline commands as single line in history
+export HISTCONTROL=ignoredups:erasedups                     # don't put duplicate commands in the history
+export HISTIGNORE="ls:cd:[bf]g:exit"                        # keep these out of history
+export HISTFILESIZE=10000                                   # loadsa history
+
+# Editors ----------------------------------------------------------
+# Terminal
+export EDITOR='vim'
+export GIT_EDITOR='vim'
+
+# Bring in the other files ----------------------------------------------------
+source ~/.bashrc_app_specific
