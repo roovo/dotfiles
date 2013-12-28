@@ -12,7 +12,8 @@ Run this:
 ```sh
 git clone https://github.com/roovo/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-script/bootstrap
+./script/bootstrap
+./script/install
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.
@@ -50,7 +51,7 @@ of what's in there :)
 ## todo
 
 - powerline in vim
-- ruby stuff (rdebugrc, irbrc, gemrc, autotest)
+- autotest
 - tmux
 - vagrant
 - run_tags / ctags

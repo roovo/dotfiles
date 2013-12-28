@@ -12,6 +12,7 @@ Vagrant::Config.run do |config|
     %{apt-get update -q},
     %{apt-get install -q -y vim},
     %{apt-get install -q -y git-core},
+    %{apt-get install -q -y curl},
   ]
 
   provisioning_script  = ["export DEBIAN_FRONTEND=noninteractive"]
