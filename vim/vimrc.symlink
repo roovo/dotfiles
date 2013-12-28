@@ -1,0 +1,206 @@
+set nocompatible                      " Vim settings are better than vi settings
+call pathogen#infect()                " Use pathogen for plugins
+
+" Editor appearance
+set showtabline=2                     " Always show the tabline at the top of the window
+set ruler                             " Show the ruler at all times
+set number                            " Show line numbers...
+set numberwidth=5                     " ...with enough room for long files
+set background=dark                   " Set things up for a terminal with a dark background
+color rupert                          " Set the colorscheme
+set cursorline                        " Highligh the current line
+set nowrap                            " Line wrapping off
+set scrolloff=3                       " Keep more context when scrolling off the end of a buffer
+set splitbelow                        " Open new splits at the bottom of the screen
+set splitright                        " Open new vertical splits to the right
+set laststatus=2                      " Always show status line.
+set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+
+" Contents
+syntax on                             " Syntax highlighting a go-go
+filetype plugin indent on             " Enable file type detection and load
+                                      " filetype plugins and indent files
+" Whitespace
+set expandtab                         " Use spaces not tabs
+set tabstop=2                         " a tab is 2 spaces
+set shiftwidth=2                      " an autoindent (with >>) is 2 spaces
+set autoindent
+highlight RedundantSpaces term=standout ctermbg=red guibg=red " Highlight trailing whitespace
+match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces highlighted
+
+" Editing
+set backspace=start,indent,eol        " Allow backspacing over everything in insert mode
+set mousehide                         " Hide the mouse when typing
+set wildmode=list:longest             " Shell-like behaviour for command autocompletion
+set visualbell                        " Stop all that beeping already
+set clipboard=unnamed                 " make copy/paste work with the mac clipboard
+
+" Searching
+set hlsearch                          " highlight search matches...
+set incsearch                         " ...as you type
+set ignorecase                        " searches are case insensative...
+set smartcase                         " ...unless they contain at least one capital letter
+
+" Filesystem searching
+set wildignore=*.o,*.obj,*.a
+
+" Remember more commands and search history
+set history=1000
+
+" Allow backgrouding buffers without writing them, and remember marks/undo
+" for backgroud bufferd
+set hidden
+
+" netrw settings
+let g:netrw_liststyle=3               " tree stylee
+
+" autocmds
+augroup vimrcGroup
+  " Remove autocommands for the group
+  autocmd!
+
+  " Jump to last cursor position when opening a file
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+augroup END
+
+" Don't use Ex mode - it's a pain when I hit it by accident
+noremap Q <Nop>
+
+" Map %% to the current path
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" Don't use those arrow keys - it's hjkl for you!
+noremap <Left> :echo "no!"<cr>
+noremap <Right> :echo "no!"<cr>
+noremap <Up> :echo "no!"<cr>
+noremap <Down> :echo "no!"<cr>
+
+" and no sneaky using them in insert mode either
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+
+" Clear the search buffer
+:nnoremap <silent> <cr> :noh<cr>
+
+" Tab autocomplete (or tab if previous character isn't a keyword)
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+"              <c-r>= inserts the following expression's result in insert mode
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+" and the leader is....
+let mapleader = ","
+
+" strip trailing whitespace<foo&bar>
+function! StripTrailingWhitespace()
+	normal mz
+	normal Hmy
+	exec '%s/\s*$//g'
+	normal 'yz<cr>
+	normal `z
+endfunction
+nnoremap <silent> <Leader>s :call StripTrailingWhitespace()<CR>
+
+" ,rt Run ctags
+noremap <Leader>rt :!run_tags<CR><CR>
+
+" ,, Toggle buffer
+nnoremap <leader><leader> <c-^>
+
+" CtrlP configuration
+let g:ctrlp_working_path_mode = ''              " don't like this feature
+noremap <leader>gv :CtrlP app/views<cr>
+noremap <leader>gc :CtrlP app/controllers<cr>
+noremap <leader>gm :CtrlP app/models<cr>
+noremap <leader>gh :CtrlP app/helpers<cr>
+noremap <leader>gl :CtrlP lib<cr>
+noremap <leader>gp :CtrlP public<cr>
+noremap <leader>gs :CtrlP spec<cr>
+noremap <leader>gf :CtrlP features<cr>
+noremap <leader>gg :topleft 100 :split Gemfile<cr>
+noremap <leader>f :CtrlP<cr>
+map     <leader>F :CtrlP %%<cr>
+
+" Switch between specs and code
+function! OpenTestAlternate()
+  let new_file = AlternateForCurrentFile()
+  exec ':e ' . new_file
+endfunction
+function! AlternateForCurrentFile()
+  let current_file  = expand("%")
+  let new_file      = current_file
+  let in_spec       = match(current_file, '^spec/') != -1
+  let going_to_spec = !in_spec
+  let in_app        =           match(current_file, '\<controllers\>') != -1 || match(current_file, '\<helpers\>')    != -1
+  let in_app        = in_app || match(current_file, '\<models\>')      != -1 || match(current_file, '\<views\>')      != -1
+  let in_app        = in_app || match(current_file, '\<services\>')    != -1 || match(current_file, '\<presenters\>') != -1
+  let in_public     = match(current_file, '\<javascripts\>') != -1
+  if going_to_spec
+    if in_app
+      let new_file = substitute(new_file, '^app/', '', '')
+    elseif in_public
+      let new_file = substitute(new_file, '^public/', '', '')
+    end
+    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
+    let new_file = substitute(new_file, '\.js$', '-spec.js', '')
+    let new_file = 'spec/' . new_file
+  else
+    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '-spec\.js$', '.js', '')
+    let new_file = substitute(new_file, '^spec/', '', '')
+    if in_app
+      let new_file = 'app/' . new_file
+    elseif in_public
+      let new_file = 'public/' . new_file
+    end
+  endif
+  return new_file
+endfunction
+nnoremap <leader>. :call OpenTestAlternate()<cr>
+
+" Comment or uncomment code
+au! FileType c          let b:comment = '//'
+au! FileType cucumber   let b:comment = '#'
+au! FileType javascript let b:comment = '//'
+au! FileType ragel      let b:comment = '#'
+au! FileType ruby       let b:comment = '#'
+au! FileType scala      let b:comment = '//'
+au! FileType sh         let b:comment = '#'
+au! FileType treetop    let b:comment = '#'
+au! FileType vim        let b:comment = '"'
+
+function! CommentOrUncomment() range
+  if !exists("b:comment")
+    echo "Don't know how to comment for file type '" . &filetype . "' (variable b:comment not set)"
+    return
+  end
+
+  let s:line = getline(a:firstline)
+  let s:comment = substitute(b:comment, '\/', '\\\/', 'g')
+
+  if match(s:line, '^\s*' . s:comment . ' ') != -1
+    " Uncomment
+    execute a:firstline . ',' . a:lastline . 's/^\(\s*\)' . s:comment . ' /\1'
+  else
+    " Comment
+    let spaces = matchlist(s:line, '^\(\s*\)')
+
+    if len(spaces) > 1
+      execute a:firstline . ',' . a:lastline . 's/^' . spaces[1] . '/' . spaces[1] . s:comment . ' '
+    end
+  end
+endfunction
+noremap <leader>c :call CommentOrUncomment()<cr>
+

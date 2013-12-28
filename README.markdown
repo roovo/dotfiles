@@ -41,8 +41,6 @@ understanding most of what's in there :)
 
 - bash stuff (bash_profile, bash_rc)
 - git-completion
-- vim
-- vim plugins
 - powerline in vim
 - ruby stuff (rdebugrc, irbrc, gemrc, autotest)
 - tmux
