@@ -113,8 +113,8 @@ function! StripTrailingWhitespace()
 endfunction
 nnoremap <silent> <Leader>s :call StripTrailingWhitespace()<CR>
 
-" ,rt Run ctags
-noremap <Leader>rt :!run_tags<CR><CR>
+" ,rt Run ruby ctags
+noremap <Leader>rt :!ruby_tags<CR><CR>
 
 " ,, Toggle buffer
 nnoremap <leader><leader> <c-^>

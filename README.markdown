@@ -45,5 +45,4 @@ of what's in there :)
 ## todo
 
 - autotest
-- run_tags / ctags
 - powerline in vim / tmux
