@@ -54,7 +54,7 @@ _dir_chomp() {
     done
     echo ${b/\/~/\~}${b+/}$p
 }
-export PS1='\[\033[01;32m\]\u:\[\033[01;34m\] $(_dir_chomp "$(pwd)" 20)\[\033[01;37m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+export PS1='\[\033[01;32m\]\u@$OS:\[\033[01;34m\] $(_dir_chomp "$(pwd)" 20)\[\033[01;37m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 #export PS1="\[${COLOR_LIGHT_GREEN}\]\u:\[${COLOR_LIGHT_BLUE}\] $(_dir_chomp "$(pwd)" 20)\[${COLOR_LIGHT_GRAY}\]$(__git_ps1)\[${COLOR_LIGHT_BLUE}\] \$\[${COLOR_NC}\] "
 
 export PS2='> '    # Secondary prompt
