@@ -10,20 +10,6 @@ There's a Vagrantfile in there too for easy testing in ubuntu.
 Run this:
 
 ```sh
-git clone https://github.com/roovo/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-./scripts/link_dotfiles
-./scripts/run_installs
-```
-
-`link_dotfiles` will symlink the appropriate files in `.dotfiles` to your
-home directory.  Everything is configured and tweaked within `~/.dotfiles`.
-
-`run_installs` runs all the `install.sh` scripts.
-
-Or to do all this is one go:
-
-```sh
 source <(curl -sSL https://raw.github.com/roovo/dotfiles/master/scripts/bootstrap)
 ```
 
