@@ -12,12 +12,14 @@ Run this:
 ```sh
 git clone https://github.com/roovo/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-./script/bootstrap
-./script/install
+./scripts/link_dotfiles
+./scripts/run_installs
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your home directory.
-Everything is configured and tweaked within `~/.dotfiles`.
+`link_dotfiles` will symlink the appropriate files in `.dotfiles` to your
+home directory.  Everything is configured and tweaked within `~/.dotfiles`.
+
+`run_installs` runs all the `install.sh` scripts.
 
 ## topical
 
