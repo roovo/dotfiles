@@ -11,6 +11,7 @@ Vagrant::Config.run do |config|
   provision_essentials = [
     %{apt-get update -q},
     %{apt-get install -q -y curl exuberant-ctags git-core tmux vim},
+    %{curl -sSL https://get.rvm.io | bash},
   ]
 
   provisioning_script  = ["export DEBIAN_FRONTEND=noninteractive"]
