@@ -10,7 +10,7 @@
   excludesfile  = ~/.gitignore
   quotepath     = false
 [github]
-  user          = roovo
+  user          = GITHUB_USER_NAME
 [help]
   autocorrect   = 1
 [merge]
