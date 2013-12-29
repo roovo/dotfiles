@@ -44,5 +44,4 @@ of what's in there :)
 
 ## todo
 
-- autotest
 - powerline in vim / tmux

@@ -1,0 +1,11 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+if $OS == 'darwin'
+  require '~/autotest_sounds/sound.rb'
+  require 'autotest/growl'                # expects the autotest-growl   gem to be installed
+  require "autotest/fsevent"              # expects the autotest-fsevent gem to be installed
+
+  Autotest::GrowlSound.sound_path = "~/autotest_sounds/sound_fx/"
+  Autotest::Growl::clear_terminal = false
+end
