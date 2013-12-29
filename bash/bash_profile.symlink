@@ -43,4 +43,4 @@ echo -ne "${COLOR_GRAY}Uptime: "; uptime
 echo -ne "${COLOR_GRAY}Server time is: "; date
 
 # rvm-install added line:
-[[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm # Load RVM into a shell session *as a function*
