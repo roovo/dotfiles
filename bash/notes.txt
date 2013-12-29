@@ -1,0 +1,49 @@
+iTerm (mac): ------------------------------------------------------
+When you start an interactive shell (log in, open terminal or iTerm in OS X,
+or create a new tab in iTerm) the following files are read and run, in this order:
+    profile
+    bashrc
+    .bash_profile
+    .bashrc (only because this file is run (sourced) in .bash_profile)
+
+When an interactive shell, that is not a login shell, is started
+(when you run "bash" from inside a shell, or when you start a shell in
+xwindows [xterm/gnome-terminal/etc] ) the following files are read and executed,
+in this order:
+    bashrc
+    .bashrc
+
+From RVM: ----------------------------------------------------------
+There are sites that describe this how it was 10 years ago like here or here so
+read to see how it works in current world:
+
+  o When you login graphically to your system it will read ~/.profile so you put there
+    settings like LANG which are important for graphical applications.
+  o When you open a terminal (except Gnome-terminal & Screen) you open a login shell
+    which sources ~/.bash_profile
+  o When you execute commands in non login shell like ssh server command or scp file
+    server:~ or sudo(without -i) or su (without -l) it will execute ~/.bashrc
+
+~/.bashrc is meant for non login invocations, you should not print there any output -
+it makes tools like scp to fail.  It is good idea to put environment variables in
+~/.bashrc, things that you depend upon in your scripts (for ssh server script) then
+if your system does not source ~/.bashrc by default via /etc/profile you should
+source it in ~/.bash_profile file so any login shell will have access also to the same
+environment like non login sessions.
+
+RVM by default adds itself currently to ~/.bash_profile file, and the recommended way
+is to enable login shell in gnome-terminal (and screen).
+
+
+From bash man page (ubuntu): ----------------------------------------
+When bash is invoked as an interactive login shell, or as a non-interactive shell with
+the --login option, it first reads and executes commands from the file /etc/profile,
+if that file exists.  After reading that file, it looks for ~/.bash_profile,
+~/.bash_login, and ~/.profile, in that order, and reads and executes commands from the
+first one that exists and is readable.  The --noprofile option may be used when the
+shell is started to inhibit this behavior.
+
+When an interactive shell that is not a login shell is started, bash reads and
+executes commands from /etc/bash.bashrc and ~/.bashrc, if these files exist.  This may
+be inhibited by using the --norc option.  The --rcfile file option will force bash to
+read and execute commands from file instead of /etc/bash.bashrc and ~/.bashrc.
