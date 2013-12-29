@@ -50,8 +50,7 @@ of what's in there :)
 
 ## todo
 
-- powerline in vim
 - autotest
 - tmux
-- vagrant
 - run_tags / ctags
+- powerline in vim

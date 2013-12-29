@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # https://github.com/fgrehm/vagrant-cachier
+  # config.cache.auto_detect = true               # not got htis to work reliably yet :(
+
+  http_proxy  = ENV['http_proxy']
+  https_proxy = ENV['https_proxy'] || http_proxy
+  ftp_proxy   = ENV['ftp_proxy']   || http_proxy
+  no_proxy    = ENV['no_proxy']
+
+  # https://github.com/tmatilai/vagrant-proxyconf
+  config.proxy.ftp      = ftp_proxy
+  config.proxy.http     = http_proxy
+  config.proxy.https    = https_proxy
+  config.proxy.no_proxy = no_proxy
+
+  # set up the proxy for the docker daemon too as it's
+  # not currently set in vagrant-proxyconf
+  provision_docker_proxy = [
+    %{echo \"export http_proxy=#{http_proxy}\nexport https_proxy=#{https_proxy}\nexport ftp_proxy=#{ftp_proxy}\nexport no_proxy=#{no_proxy}\" > /etc/default/docker},
+    %{if [[ -e /etc/init/docker.conf ]]; then service docker restart; fi},
+  ]
+  config.vm.provision :shell, :inline => provision_docker_proxy.join("\n")
+end
