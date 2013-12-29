@@ -10,9 +10,7 @@ Vagrant::Config.run do |config|
 
   provision_essentials = [
     %{apt-get update -q},
-    %{apt-get install -q -y vim},
-    %{apt-get install -q -y git-core},
-    %{apt-get install -q -y curl},
+    %{apt-get install -q -y curl git-core tmux vim},
   ]
 
   provisioning_script  = ["export DEBIAN_FRONTEND=noninteractive"]

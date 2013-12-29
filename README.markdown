@@ -48,10 +48,10 @@ There's a few special files in the hierarchy.
 
 ## thanks
 
-The install philosophy, bootstrap script (and much of this readme) is taken
-from Zach Holman's most excellent set of
-[dotfiles](https://raw.github.com/holman/dotfiles). Most of the vim stuff was
-inspired by watching Gary Bernhardt's [Destroy All Software screencasts]
+The install philosophy/scripts (and much of this readme) is taken from Zach
+Holman's most excellent set of [dotfiles]
+(https://raw.github.com/holman/dotfiles). Most of the vim stuff was inspired
+by watching Gary Bernhardt's [Destroy All Software screencasts]
 (https://www.destroyallsoftware.com/screencasts), copying from his [dotfiles]
 (https://github.com/garybernhardt/dotfiles) - and actaully understanding most
 of what's in there :)
@@ -59,6 +59,5 @@ of what's in there :)
 ## todo
 
 - autotest
-- tmux
 - run_tags / ctags
-- powerline in vim
+- powerline in vim / tmux
