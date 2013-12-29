@@ -6,3 +6,4 @@ git clone https://github.com/roovo/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./scripts/run_installs
 ./scripts/link_dotfiles
+cd -

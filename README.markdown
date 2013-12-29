@@ -21,6 +21,12 @@ home directory.  Everything is configured and tweaked within `~/.dotfiles`.
 
 `run_installs` runs all the `install.sh` scripts.
 
+Or to do all this is one go:
+
+```sh
+source <(curl -sSL https://raw.github.com/roovo/dotfiles/master/scripts/bootstrap)
+```
+
 ## topical
 
 Everything's built around topic areas. If you're adding a new area to your
