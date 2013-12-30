@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# setxkbmap settings can be found in:
+#   /usr/share/X11/xkb/rules/base.lst
+
+if [[ $OS == 'darwin' ]]; then
+  echo "Not suported on OS X" 1>&2
+  exit 1
+fi
+
+current_symbols=$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $0}')
+
+if [[ $current_symbols =~ ctrl\(nocaps\) ]]; then
+  setxkbmap -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option
+  echo 'caps lock is caps lock'
+else
+  setxkbmap -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option ctrl:nocaps
+  echo 'caps lock is ctl'
+fi
