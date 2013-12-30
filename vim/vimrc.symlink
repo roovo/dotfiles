@@ -1,6 +1,9 @@
 set nocompatible                      " Vim settings are better than vi settings
 call pathogen#infect()                " Use pathogen for plugins
 
+" Powerline fonts for airline
+let g:airline_powerline_fonts = 1
+
 " Editor appearance
 set showtabline=2                     " Always show the tabline at the top of the window
 set ruler                             " Show the ruler at all times
