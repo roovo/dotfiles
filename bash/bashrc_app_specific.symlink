@@ -1,3 +1,5 @@
+# vi: set ft=sh :
+
 # Vim ------------------------------------------------------------
 alias rmswp='find . -name \*.swp -type f -print0 | xargs -0 rm -f'
 

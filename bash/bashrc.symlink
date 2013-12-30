@@ -1,3 +1,5 @@
+# vi: set ft=sh :
+
 # Path ----------------------------------------------------------
 export PATH=/usr/local/bin:/usr/local/sbin:/opt/local/bin:$PATH:$HOME/.rvm/bin
 
