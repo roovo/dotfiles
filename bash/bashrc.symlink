@@ -79,5 +79,10 @@ export HISTFILESIZE=10000                                   # loadsa history
 export EDITOR='vim'
 export GIT_EDITOR='vim'
 
+# Colorize ls output on ubuntu  ------------------------------------
+if [[ $OS == 'linux' ]]; then
+  alias ls='ls --color=auto'
+fi
+
 # Bring in the other files ----------------------------------------------------
 source ~/.bashrc_app_specific
