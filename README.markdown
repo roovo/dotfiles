@@ -44,5 +44,4 @@ of what's in there :)
 
 ## todo
 
-- powerline fonts (for vim)
 - powerline for tmux (https://github.com/edkolev/tmuxline.vim ??)
