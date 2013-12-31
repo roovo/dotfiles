@@ -41,7 +41,3 @@ by watching Gary Bernhardt's [Destroy All Software screencasts]
 (https://www.destroyallsoftware.com/screencasts), copying from his [dotfiles]
 (https://github.com/garybernhardt/dotfiles) - and actaully understanding most
 of what's in there :)
-
-## todo
-
-- powerline for tmux (https://github.com/edkolev/tmuxline.vim ??)
