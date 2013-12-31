@@ -1,3 +1,4 @@
-escape ^``
-shell -$SHELL
-startup_message off
+escape                ^``         # I use ctrl-a too much....
+shell                 -$SHELL     # use a login shell (loads .bash_profile)
+startup_message       off         # annoying
+termcapinfo xterm*    ti@:te@     # enable mouse wheel scrollback
