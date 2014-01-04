@@ -4,11 +4,7 @@
 export OS=`uname -s | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
 
 # Path ----------------------------------------------------------
-export PATH=~/bin_local:/usr/local/bin:/usr/local/sbin:/opt/local/bin:$PATH:$HOME/.rvm/bin
-
-if [ -d ~/bin ]; then
-	export PATH=:~/bin:$PATH                        # add user bin folder to the path
-fi
+export PATH=~/bin:~/bin_local:/usr/local/bin:/usr/local/sbin:/opt/local/bin:$PATH:$HOME/.rvm/bin
 
 # Auto Proxy detection - OSX only ---------------------------------
 if [[ $OS == "darwin" ]]; then
