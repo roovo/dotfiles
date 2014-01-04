@@ -1,4 +1,5 @@
 .netrwhist*
 .vagrant/*
 git/gitconfig.symlink
+vagrant.d.symlink/*
 vim/vim.symlink/spell/*
