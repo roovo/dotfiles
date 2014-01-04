@@ -1,37 +1,5 @@
 # vi: set ft=sh :
 
-# Identify the OS -------------------------------------------------
-export OS=`uname -s | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/'`
-
-if [ -d ~/bin ]; then
-	export PATH=:~/bin:$PATH                        # add user bin folder to the path
-fi
-
-# Auto Proxy detection - OSX only ---------------------------------
-if [[ $OS == "darwin" ]]; then
-  http_proxy=`proxy-config -h`
-  if [ "$http_proxy" = "" ]; then
-    unset http_proxy
-  else
-    export http_proxy=$http_proxy
-  fi
-
-  https_proxy=`proxy-config -s`
-  if [ "$https_proxy" = "" ]; then
-    unset https_proxy
-  else
-    export https_proxy=$https_proxy
-  fi
-
-  ftp_proxy=`proxy-config -f`
-  if [ "$http_proxy" = "" ]; then
-    unset ftp_proxy
-  else
-    export ftp_proxy=$ftp_proxy
-  fi
-  export no_proxy=localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-fi
-
 # Load in .git-completion.bash ------------------------------------
 source ~/bin/git-completion.bash
 
