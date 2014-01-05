@@ -12,5 +12,8 @@ echo -e "${COLOR_BROWN}`bash --version`"
 echo -ne "${COLOR_GRAY}Uptime: "; uptime
 echo -ne "${COLOR_GRAY}Server time is: "; date
 
-# rvm-install added line:
+# set up dockerize
+[[ -x /usr/local/src/dockerize/bin/dockerize ]] && eval "$(/usr/local/src/dockerize/bin/dockerize init -)"
+
+# set up rvm
 [[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm # Load RVM into a shell session *as a function*
