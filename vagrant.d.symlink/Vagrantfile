@@ -23,9 +23,13 @@ Vagrant.configure("2") do |config|
 
   # set up the proxy for the docker daemon too as it's
   # not currently set in vagrant-proxyconf
+  # can only do this if it's already there else the docker install fails as
+  # it asks what you want to do wit the existing file
   provision_docker_proxy = [
-    %{echo \"export http_proxy=#{http_proxy}\nexport https_proxy=#{https_proxy}\nexport ftp_proxy=#{ftp_proxy}\nexport no_proxy=#{no_proxy}\" > /etc/default/docker},
-    %{if [[ -e /etc/init/docker.conf ]]; then service docker restart; fi},
+    %{if [[ -e /etc/default/docker ]]; then},
+      %{echo \"export http_proxy=#{http_proxy}\nexport https_proxy=#{https_proxy}\nexport ftp_proxy=#{ftp_proxy}\nexport no_proxy=#{no_proxy}\" > /etc/default/docker},
+      %{if [[ -e /etc/init/docker.conf ]]; then service docker restart; fi},
+    %{fi},
   ]
   config.vm.provision :shell, :inline => provision_docker_proxy.join("\n")
 end
