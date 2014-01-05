@@ -114,6 +114,5 @@ install_dotfiles () {
 
 setup_gitconfig
 install_dotfiles
-link_files $DOTFILES_ROOT/bin $HOME/bin
 
 echo -e "\n  All installed!"

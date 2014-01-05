@@ -1,7 +1,7 @@
 # vi: set ft=sh :
 
 # Load in .git-completion.bash ------------------------------------
-source ~/bin/git-completion.bash
+source ~/.bin/git-completion.bash
 
 # Load in .bashrc -------------------------------------------------
 source ~/.bashrc
