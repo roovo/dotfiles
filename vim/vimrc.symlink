@@ -176,6 +176,7 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 " Comment or uncomment code
 au! FileType c          let b:comment = '//'
 au! FileType cucumber   let b:comment = '#'
+au! FileType dockerfile let b:comment = '#'
 au! FileType javascript let b:comment = '//'
 au! FileType ragel      let b:comment = '#'
 au! FileType ruby       let b:comment = '#'
