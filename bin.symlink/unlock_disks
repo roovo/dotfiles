@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -e
+
+user () {
+  printf "\r  [ \033[0;33m?\033[0m ] $1 "
+}
+
+info () {
+  printf "  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+failure () {
+  printf "\r\033[2K  [ \033[00;31mFail\033[0m ] $1\n"
+}
+
+echo -e "Just hit enter to skip unlocking a disk\n"
+
+uuids=$(diskutil corestorage list | grep -o 'Logical Volume.*' | grep -v 'Logical Volume Family' | grep -v 'Logical Volume Group' | cut -f3 -d' ')
+
+for uuid in ${uuids}; do
+  info=$(diskutil corestorage info $uuid)
+  if [[ $info =~ LV.*Status.*Locked ]]; then
+    name=$(echo "${info}" | grep -o 'LV Name:.*$' | cut -f2 -d':' | tr -d ' ')
+    user "Enter passphrase for disk ${name}:"
+    read -s passphrase
+    if [[ ! -z $passphrase ]]; then
+      if diskutil corestorage unlockVolume $uuid -passphrase $passphrase; then
+        success "disk $name unlocked"
+      else
+        failure "disk $name unlock failed"
+      fi
+    else
+      info "disk $name ignored"
+    fi
+  fi
+done
