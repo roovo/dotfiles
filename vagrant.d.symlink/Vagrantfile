@@ -2,6 +2,9 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+
+  config.ssh.forward_agent = true
+
   # https://github.com/fgrehm/vagrant-cachier
   # config.cache.auto_detect = true               # not got htis to work reliably yet :(
 
