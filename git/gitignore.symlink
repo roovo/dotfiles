@@ -17,3 +17,6 @@ TAGS
 # xcode noise
 *.pbxuser
 *.mode1v3
+
+# because I use vagrant
+.vagrant/*
