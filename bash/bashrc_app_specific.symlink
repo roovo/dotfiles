@@ -5,3 +5,7 @@ alias rmswp='find . -name \*.swp -type f -print0 | xargs -0 rm -f'
 
 # Ruby -----------------------------------------------------------
 alias gem_purge='gem list | cut -f1 -d " " | xargs gem uninstall -aIx'
+
+# Go -------------------------------------------------------------
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
