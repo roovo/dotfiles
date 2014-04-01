@@ -6,7 +6,7 @@ export OS=`uname -s | sed -e 's/  */-/g;y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijk
 # Path ----------------------------------------------------------
 export PATH=$HOME/.bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:$PATH:$HOME/.rvm/bin
 
-# Auto Proxy detection - OSX only ---------------------------------
+# Auto Proxy detection ------------------------------------------
 if [[ $OS == "darwin" ]]; then
   http_proxy=`proxy-settings -h`
   if [ "$http_proxy" = "" ]; then
@@ -28,8 +28,19 @@ if [[ $OS == "darwin" ]]; then
   else
     export ftp_proxy=$ftp_proxy
   fi
-  export no_proxy=localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+else
+  http_proxy="http://proxy.intra.bt.com:8080"
+  if ping -c1 -w1 147.149.2.7  >/dev/null 2>&1; then
+    export http_proxy=${http_proxy}
+    export https_proxy=${http_proxy}
+    export ftp_proxy=${http_proxy}
+  else
+    unset http_proxy
+    unset https_proxy
+    unset ftp_proxy
+  fi
 fi
+export no_proxy=localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 
 # Misc -------------------------------------------------------------
 export LANG=en_GB.UTF-8                                     # set the locale
