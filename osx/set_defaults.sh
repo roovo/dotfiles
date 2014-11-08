@@ -152,4 +152,9 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
-
+###############################################################################
+# vlc player                                                                  #
+###############################################################################
+# disable listing recent items in the dock
+defaults write org.videolan.vlc NSRecentDocumentsLimit 0
+defaults write org.videolan.vlc.LSSharedFileList RecentDocuments -dict-add MaxAmount 0
