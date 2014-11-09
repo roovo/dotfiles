@@ -76,16 +76,16 @@ noremap Q <Nop>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Don't use those arrow keys - it's hjkl for you!
-noremap <Left> :echo "no!"<cr>
-noremap <Right> :echo "no!"<cr>
-noremap <Up> :echo "no!"<cr>
-noremap <Down> :echo "no!"<cr>
+" noremap <Left> :echo "no!"<cr>
+" noremap <Right> :echo "no!"<cr>
+" noremap <Up> :echo "no!"<cr>
+" noremap <Down> :echo "no!"<cr>
 
 " and no sneaky using them in insert mode either
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-inoremap <Up> <nop>
-inoremap <Down> <nop>
+" inoremap <Left> <nop>
+" inoremap <Right> <nop>
+" inoremap <Up> <nop>
+" inoremap <Down> <nop>
 
 " Clear the search buffer
 :nnoremap <silent> <cr> :noh<cr>
