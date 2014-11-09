@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   # from https://github.com/dotless-de/vagrant-vbguest
   #   - a Vagrant plugin to keep your VirtualBox Guest Additions up to date
   #   - uncomment if you don't want this to run
-  # config.vbguest.auto_update = false
+  config.vbguest.auto_update = false
 
   http_proxy  = ENV['http_proxy']
   https_proxy = ENV['https_proxy'] || http_proxy
