@@ -45,7 +45,7 @@ set ignorecase                        " searches are case insensative...
 set smartcase                         " ...unless they contain at least one capital letter
 
 " Filesystem searching
-set wildignore=*.o,*.obj,*.a
+set wildignore=*.gem,*.o,*.obj,*.a,log/*,tags
 
 " Remember more commands and search history
 set history=1000
