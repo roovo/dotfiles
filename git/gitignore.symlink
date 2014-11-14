@@ -8,6 +8,9 @@ profile
 *.swo
 *.swp
 
+# OpenOffice stuff
+.~*#
+
 # exuberant ctags
 TAGS
 
