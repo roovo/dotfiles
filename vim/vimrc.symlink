@@ -149,6 +149,7 @@ function! AlternateForCurrentFile()
   let in_app        =           match(current_file, '\<controllers\>') != -1 || match(current_file, '\<helpers\>')    != -1
   let in_app        = in_app || match(current_file, '\<models\>')      != -1 || match(current_file, '\<views\>')      != -1
   let in_app        = in_app || match(current_file, '\<services\>')    != -1 || match(current_file, '\<presenters\>') != -1
+  let in_app        = in_app || match(current_file, '\<jobs\>')        != -1 || match(current_file, '\<consumers\>')  != -1
   let in_public     = match(current_file, '\<javascripts\>') != -1
   if going_to_spec
     if in_app
