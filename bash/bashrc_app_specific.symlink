@@ -10,6 +10,12 @@ alias ruby_tags='ctags -R --languages=ruby --exclude=.git --exclude=log --exclud
 # TaskWarrior ----------------------------------------------------
 source /usr/local/etc/bash_completion.d/task.sh
 
+# pyenv (for rapids tests)
+if type pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 # Go -------------------------------------------------------------
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
