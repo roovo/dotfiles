@@ -1,0 +1,55 @@
+# files
+data.location=~/.task
+
+# settings
+weekstart=Monday
+
+# user defined attributes
+uda.duration.type=duration
+uda.duration.label=Dur
+uda.who.type=string
+uda.who.label=Who
+
+# built-in report formatting
+report.minimal.labels=ID,Project,Tags,Dur,Who,Description
+report.minimal.columns=id,project,tags.count,duration,who,description.count
+report.list.labels=ID,Active,Age,D,P,Project,Tags,R,Sch,Due,Until,Dur,Who,Description,Urg
+report.list.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.age,duration,who,description.count,urgency
+report.next.columns=id,start.age,depends,priority,project,tags,scheduled.countdown,due.age,until.age,duration,who,description,urgency
+report.next.labels=ID,Active,Deps,P,Project,Tag,S,Due,Until,Dur,Who,Description,Urg
+
+# custom reports
+report.bt.columns=id,priority,project,tags,duration,who,description.count,urgency
+report.bt.labels=ID,P,Project,Tag,Dur,Who,Description,Urg
+report.bt.description=Most urgent bt tasks
+report.bt.filter=status:pending limit:page project:bt
+report.bt.sort=urgency-
+report.home.columns=id,priority,project,tags,duration,due,description.count,urgency
+report.home.labels=ID,P,Project,Tag,Dur,Due,Description,Urg
+report.home.description=Most urgent home tasks
+report.home.filter=status:pending limit:page project:home
+report.home.sort=urgency-
+
+# Color themes
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/light-16.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/light-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-16.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-red-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-green-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-blue-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-violets-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-yellow-green.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-gray-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-gray-blue-256.theme
+include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/solarized-dark-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/solarized-light-256.theme
+# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/no-color.theme
+
+# [Created by task 2.4.0 2/15/2015 13:46:09]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Use 'task show' to see all defaults and overrides
+
