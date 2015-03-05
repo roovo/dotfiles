@@ -20,8 +20,8 @@ report.next.columns     = id,start.age,depends,priority,project,tags,scheduled.c
 report.next.labels      = ID,Active,Deps,P,Project,Tag,S,Due,Until,Dur,Who,Description,Urg
 
 # custom reports
-report.bt.columns       = id,priority,project,tags,duration,who,description.count,urgency
-report.bt.labels        = ID,P,Project,Tag,Dur,Who,Description,Urg
+report.bt.columns       = id,priority,project,tags,duration,due,who,description.count,urgency
+report.bt.labels        = ID,P,Project,Tag,Dur,Due,Who,Description,Urg
 report.bt.description   = Most urgent bt tasks
 report.bt.filter        = status:pending limit:page project:bt
 report.bt.sort          = urgency-
