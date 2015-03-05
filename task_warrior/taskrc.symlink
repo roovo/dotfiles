@@ -3,6 +3,7 @@ data.location=~/.task
 
 # settings
 weekstart=Monday
+calendar.holidays=sparse # full
 
 # user defined attributes
 uda.duration.type=duration
@@ -30,7 +31,7 @@ report.home.description=Most urgent home tasks
 report.home.filter=status:pending limit:page project:home
 report.home.sort=urgency-
 
-# color theme
+# includes
 include ~/.dotfiles/task_warrior/dark-256.theme
-
+include ~/.dotfiles/task_warrior/holidays.en-GB.rc
 include ~/.taskrc_server
