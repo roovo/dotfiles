@@ -30,26 +30,7 @@ report.home.description=Most urgent home tasks
 report.home.filter=status:pending limit:page project:home
 report.home.sort=urgency-
 
-# Color themes
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/light-16.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/light-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-16.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-red-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-green-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-blue-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-violets-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-yellow-green.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-gray-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/dark-gray-blue-256.theme
-include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/solarized-dark-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/solarized-light-256.theme
-# include /usr/local/Cellar/task/2.4.0/share/doc/task/rc/no-color.theme
+# color theme
+include ~/.dotfiles/task_warrior/dark-256.theme
 
-# [Created by task 2.4.0 2/15/2015 13:46:09]
-# Taskwarrior program configuration file.
-# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
-# 'man task-sync' or 'man taskrc'
-
-# Use 'task show' to see all defaults and overrides
-
+include ~/.taskrc_server
