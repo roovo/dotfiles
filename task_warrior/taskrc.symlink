@@ -1,35 +1,35 @@
 # files
-data.location=~/.task
+data.location           = ~/.task
 
 # settings
-weekstart=Monday
-calendar.holidays=sparse # full
+weekstart               = Monday
+calendar.holidays       = sparse # full
 
 # user defined attributes
-uda.duration.type=duration
-uda.duration.label=Dur
-uda.who.type=string
-uda.who.label=Who
+uda.duration.type       = duration
+uda.duration.label      = Dur
+uda.who.type            = string
+uda.who.label           = Who
 
 # built-in report formatting
-report.minimal.labels=ID,Project,Tags,Dur,Who,Description
-report.minimal.columns=id,project,tags.count,duration,who,description.count
-report.list.labels=ID,Active,Age,D,P,Project,Tags,R,Sch,Due,Until,Dur,Who,Description,Urg
-report.list.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.age,duration,who,description.count,urgency
-report.next.columns=id,start.age,depends,priority,project,tags,scheduled.countdown,due.age,until.age,duration,who,description,urgency
-report.next.labels=ID,Active,Deps,P,Project,Tag,S,Due,Until,Dur,Who,Description,Urg
+report.minimal.labels   = ID,Project,Tags,Dur,Who,Description
+report.minimal.columns  = id,project,tags.count,duration,who,description.count
+report.list.labels      = ID,Active,Age,D,P,Project,Tags,R,Sch,Due,Until,Dur,Who,Description,Urg
+report.list.columns     = id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.age,duration,who,description.count,urgency
+report.next.columns     = id,start.age,depends,priority,project,tags,scheduled.countdown,due.age,until.age,duration,who,description,urgency
+report.next.labels      = ID,Active,Deps,P,Project,Tag,S,Due,Until,Dur,Who,Description,Urg
 
 # custom reports
-report.bt.columns=id,priority,project,tags,duration,who,description.count,urgency
-report.bt.labels=ID,P,Project,Tag,Dur,Who,Description,Urg
-report.bt.description=Most urgent bt tasks
-report.bt.filter=status:pending limit:page project:bt
-report.bt.sort=urgency-
-report.home.columns=id,priority,project,tags,duration,due,description.count,urgency
-report.home.labels=ID,P,Project,Tag,Dur,Due,Description,Urg
-report.home.description=Most urgent home tasks
-report.home.filter=status:pending limit:page project:home
-report.home.sort=urgency-
+report.bt.columns       = id,priority,project,tags,duration,who,description.count,urgency
+report.bt.labels        = ID,P,Project,Tag,Dur,Who,Description,Urg
+report.bt.description   = Most urgent bt tasks
+report.bt.filter        = status:pending limit:page project:bt
+report.bt.sort          = urgency-
+report.home.columns     = id,priority,project,tags,duration,due,description.count,urgency
+report.home.labels      = ID,P,Project,Tag,Dur,Due,Description,Urg
+report.home.description = Most urgent home tasks
+report.home.filter      = status:pending limit:page project:home
+report.home.sort        = urgency-
 
 # includes
 include ~/.dotfiles/task_warrior/dark-256.theme
