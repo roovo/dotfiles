@@ -5,6 +5,7 @@ set -e
 git clone https://github.com/roovo/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./scripts/link_dotfiles
+./scripts/install_rvm
 ./scripts/run_installs        # this has to run after link_dotfiles
                               # or the fonts wont be in place
 cd -

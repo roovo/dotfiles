@@ -11,6 +11,7 @@ user () {
 }
 
 if [[  $(which rvm) ]]; then
+  echo ''
   user ' - rvm not installed - install it? [y/N]'
   read -n 1 install_rvm
   echo ''
