@@ -180,6 +180,7 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 " run specs/features
 map <leader>t :call RunTestFile()<cr>
 map <leader>T :call RunNearestTest()<cr>
+map <leader>r :call RunTests('')<cr>
 
 function! RunTestFile(...)
   if a:0
@@ -218,7 +219,9 @@ function! RunTests(filename)
   :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
   :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
 
-  if match(a:filename, '\.feature') != -1
+  if empty(a:filename)
+    exec ":!rake"
+  elseif match(a:filename, '\.feature') != -1
     exec ":!cucumber " . a:filename
   else
     if filereadable("Gemfile")
