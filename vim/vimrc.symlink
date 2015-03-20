@@ -141,6 +141,7 @@ function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
 endfunction
+
 function! AlternateForCurrentFile()
   let current_file  = expand("%")
   let new_file      = current_file
@@ -172,7 +173,61 @@ function! AlternateForCurrentFile()
   endif
   return new_file
 endfunction
+
 nnoremap <leader>. :call OpenTestAlternate()<cr>
+
+
+" run specs/features
+map <leader>t :call RunTestFile()<cr>
+map <leader>T :call RunNearestTest()<cr>
+
+function! RunTestFile(...)
+  if a:0
+    let command_suffix = a:1
+  else
+    let command_suffix = ""
+  end
+
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+  if in_test_file
+    call SetTestFile(command_suffix)
+  elseif !exists("t:roovo_test_file")
+    return
+  end
+
+  call RunTests(t:roovo_test_file . t:roovo_command_suffix)
+endfunction
+
+function! RunNearestTest()
+  let test_line_number = line('.')
+  call RunTestFile(":" . test_line_number)
+endfunction
+
+function! SetTestFile(command_suffix)
+  let t:roovo_test_file       = @%
+  let t:roovo_command_suffix  = a:command_suffix
+endfunction
+
+function! RunTests(filename)
+  :w
+
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+
+  if match(a:filename, '\.feature') != -1
+    exec ":!cucumber " . a:filename
+  else
+    if filereadable("Gemfile")
+      exec ":!bundle exec rspec " . a:filename
+    else
+      exec ":!rspec " . a:filename
+    end
+  end
+endfunction
 
 " Comment or uncomment code
 au! FileType c          let b:comment = '//'
