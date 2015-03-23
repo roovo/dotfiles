@@ -10,7 +10,7 @@ There's a Vagrantfile in there too for easy testing in ubuntu.
 Run this:
 
 ```sh
-bash <(curl -sSL https://raw.github.com/roovo/dotfiles/master/scripts/bootstrap)
+bash <(curl -sSL https://raw.githubusercontent.com/roovo/dotfiles/master/scripts/bootstrap)
 ```
 
 ## topical
