@@ -178,20 +178,29 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 
 
 " run specs/features
-map <leader>t :call RunTestFile()<cr>
-map <leader>T :call RunNearestTest()<cr>
-map <leader>r :call RunTests('')<cr>
+map <leader>ta :call RunTestFile()<cr>
+map <leader>ts :call RunNearestTest()<cr>
+map <leader>tr :call RunTests('')<cr>
+map <leader>tw :call RunWipFeatures()<cr>
 
-function! RunTestFile(...)
-  if a:0
-    let command_suffix = a:1
-  else
-    let command_suffix = ""
+function! RunTestFile()
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+
+  if in_test_file
+    call SetTestFile()
+  elseif !exists("t:roovo_test_file")
+    return
   end
 
+  call RunTests(t:roovo_test_file)
+endfunction
+
+function! RunNearestTest()
   let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+
   if in_test_file
-    call SetTestFile(command_suffix)
+    call SetTestFile()
+    call SetTestCommandSuffix()
   elseif !exists("t:roovo_test_file")
     return
   end
@@ -199,25 +208,20 @@ function! RunTestFile(...)
   call RunTests(t:roovo_test_file . t:roovo_command_suffix)
 endfunction
 
-function! RunNearestTest()
+function! SetTestCommandSuffix()
   let test_line_number = line('.')
-  call RunTestFile(":" . test_line_number)
+  let t:roovo_command_suffix  = ":" . test_line_number
 endfunction
 
-function! SetTestFile(command_suffix)
-  let t:roovo_test_file       = @%
-  let t:roovo_command_suffix  = a:command_suffix
+function! SetTestFile()
+  " if t:roovo_test_file != expand('%')
+    let t:roovo_test_file       = @%
+    let t:roovo_command_suffix  = ""
+  " end
 endfunction
 
 function! RunTests(filename)
-  :w
-
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  call SaveAndClearScreen()
 
   if empty(a:filename)
     exec ":!rake"
@@ -230,6 +234,23 @@ function! RunTests(filename)
       exec ":!rspec " . a:filename
     end
   end
+endfunction
+
+function! RunWipFeatures()
+  call SaveAndClearScreen()
+
+  exec ":!cucumber -pwip"
+endfunction
+
+function! SaveAndClearScreen()
+  :wa
+
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
+  :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
 endfunction
 
 " Comment or uncomment code
