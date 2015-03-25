@@ -216,10 +216,10 @@ function! SetTestCommandSuffix()
 endfunction
 
 function! SetTestFile()
-  " if t:roovo_test_file != expand('%')
-    let t:roovo_test_file       = @%
+  if !exists(t:roovo_test_file) || (t:roovo_test_file != @%)
     let t:roovo_command_suffix  = ""
-  " end
+  end
+  let t:roovo_test_file       = @%
 endfunction
 
 function! RunTests(filename)
