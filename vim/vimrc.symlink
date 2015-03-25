@@ -178,6 +178,8 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 
 
 " run specs/features
+map <leader>t  :call RunTestFile()<cr>
+map <leader>T  :call RunNearestTest()<cr>
 map <leader>ta :call RunTestFile()<cr>
 map <leader>ts :call RunNearestTest()<cr>
 map <leader>tr :call RunTests('')<cr>
