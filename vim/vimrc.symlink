@@ -289,4 +289,3 @@ function! CommentOrUncomment() range
   end
 endfunction
 noremap <leader>c :call CommentOrUncomment()<cr>
-
