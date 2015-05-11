@@ -5,6 +5,11 @@ data.location           = ~/.task
 weekstart               = Monday
 calendar.holidays       = sparse # full
 
+# contexts
+context.home            = -private and (+red or +home)
+context.work            = -private and (+adastral or +green or +red or +work or +laptop)
+context.private         = +private
+
 # user defined attributes
 uda.duration.type       = duration
 uda.duration.label      = Dur
