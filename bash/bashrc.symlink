@@ -108,12 +108,6 @@ export PS2='> '    # Secondary prompt
 export PS3='#? '   # Prompt 3
 export PS4='+'     # Prompt 4
 
-# Bash Completion -------------------------------------------------------------
-# actually, these are readline settings
-bind "set completion-ignore-case on"                        # note: bind used instead of sticking these in .inputrc
-bind "set bell-style none"                                  # no bell
-bind "set show-all-if-ambiguous On"                         # show list automatically, without double tab
-
 # History ----------------------------------------------------------
 shopt -s histappend                                         # append history
 shopt -s cmdhist                                            # multiline commands as single line in history
