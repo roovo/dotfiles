@@ -23,3 +23,6 @@ profile
 
 # because I use vagrant
 .vagrant/*
+
+# because byebug seems to generate these
+.byebug_history
