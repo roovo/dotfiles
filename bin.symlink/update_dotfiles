@@ -5,7 +5,9 @@ set -e
 cd ~/.dotfiles
 
 git fetch
-git rebase origin/master --autostash
+git stash
+git rebase origin/master
+git stash pop
 
 ./scripts/link_dotfiles
 
