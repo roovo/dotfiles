@@ -13,6 +13,12 @@ Run this:
 bash <(curl -sSL https://raw.githubusercontent.com/roovo/dotfiles/master/scripts/bootstrap)
 ```
 
+or to avoid interactivity:
+
+```sh
+bash <(curl -sSL https://raw.githubusercontent.com/roovo/dotfiles/master/scripts/bootstrap) author_name email github_name
+```
+
 ## topical
 
 Everything's built around topic areas. If you're adding a new area to your

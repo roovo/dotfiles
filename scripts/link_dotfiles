@@ -2,6 +2,10 @@
 
 set -e
 
+git_author_name=$1
+git_author_email=$2
+github_user_name=$3
+
 DOTFILES_ROOT="`pwd`"
 
 info () {
@@ -21,19 +25,20 @@ setup_gitconfig () {
   then
     info 'setup gitconfig'
 
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
-      git_credential='osxkeychain'
+    if [ -z "${git_author_name}" ]; then
+      user ' - What is your git author name?'
+      read -e git_author_name
     fi
 
-    user ' - What is your git author name?'
-    read -e git_author_name
-    user ' - What is your git author email?'
-    read -e git_author_email
-    user ' - What is your github username?'
-    read -e github_user_name
+    if [ -z "${git_author_email}" ]; then
+      user ' - What is your git author email?'
+      read -e git_author_email
+    fi
 
+    if [ -z "${github_user_name}" ]; then
+      user ' - What is your github username?'
+      read -e github_user_name
+    fi
     sed -e "s/GIT_AUTHOR_NAME/$git_author_name/g" -e "s/GIT_AUTHOR_EMAIL/$git_author_email/g" -e "s/GITHUB_USER_NAME/$github_user_name/g" git/gitconfig.symlink.example > git/gitconfig.symlink
 
     success 'gitconfig'
