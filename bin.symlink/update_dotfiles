@@ -2,13 +2,28 @@
 
 set -e
 
+stash_first=false
+
 cd ~/.dotfiles
 
-git fetch
-git stash
-git rebase origin/master
-git stash pop
+if ! git diff-index --quiet HEAD; then
+  stash_first=true
+fi
 
-./scripts/link_dotfiles
+git fetch
+
+if [ "${stash_first}" == "true" ]; then
+  echo "Stashing changes"
+  git stash -q
+fi
+
+git reset --hard origin/master
+
+if [ "${stash_first}" == "true" ]; then
+  echo "Popping stash"
+  git stash pop -q
+fi
+
+./scripts/link_dotfiles S
 
 cd -

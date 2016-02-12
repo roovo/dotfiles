@@ -12,10 +12,16 @@ if [[ "$#" -eq 3 ]]; then
   backup_all=true
 fi
 
-git_author_name=$1
-git_author_email=$2
-github_user_name=$3
+clash_option=$1
+git_author_name=$2
+git_author_email=$3
+github_user_name=$4
 
+if [[ "${clash_option}" == "B" ]]; then
+  backup_all=true
+elif [[ "${clash_option}" == "S" ]]; then
+  skip_all=true
+fi
 
 info () {
   printf "  [ \033[00;34m..\033[0m ] $1"
