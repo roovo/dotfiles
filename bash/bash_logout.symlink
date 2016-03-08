@@ -1,2 +1,4 @@
-ssh-add -D
-ssh-agent -k
+if [[ $OS == 'linux' ]]; then
+  ssh-add -D
+  ssh-agent -k
+fi
