@@ -12,7 +12,7 @@ profile
 .~*#
 
 # exuberant ctags
-/TAGS
+TAGS
 
 # because I use git-svn rather than svn
 .svn
