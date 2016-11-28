@@ -19,6 +19,10 @@ set splitright                        " Open new vertical splits to the right
 set laststatus=2                      " Always show status line.
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
+" auto-resize vsplit windows
+:let &winwidth = &columns * 9 / 10
+set winminwidth=12
+
 " use javascript formattting for typescript files
 au BufNewFile,BufRead *.ts	set filetype=javascript
 
