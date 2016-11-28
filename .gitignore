@@ -3,3 +3,4 @@
 git/gitconfig.symlink
 vagrant.d.symlink/*
 vim/vim.symlink/spell/*
+vim/vim.symlink/view/*

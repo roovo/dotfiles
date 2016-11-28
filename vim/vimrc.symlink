@@ -48,7 +48,7 @@ set ignorecase                        " searches are case insensative...
 set smartcase                         " ...unless they contain at least one capital letter
 
 " Filesystem searching
-set wildignore=*.gem,*.o,*.obj,*.a,log/*,tags,tmp/*,*.jpg,*.gif,*.png,*.sql,*.csv
+set wildignore=*.a,*.csv,*.gem,*.gif,*.jpg,*.o,*.obj,*.png,*.sql,**/elm-stuff,**/log,**/node_modules,**/tmp
 
 " Remember more commands and search history
 set history=1000
@@ -124,6 +124,17 @@ noremap <Leader>rt :!ctags -R .<CR>
 
 " ,, Toggle buffer
 nnoremap <leader><leader> <c-^>
+
+" elm stuff
+" let g:elm_format_autosave   = 1
+let g:elm_setup_keybindings = 0
+noremap <leader>d   :ElmShowDocs<cr>
+noremap <leader>dw  :ElmBrowseDocs<cr>
+noremap <leader>e   :ElmErrorDetail<cr>
+noremap <leader>m   :w \| :ElmMake<cr>
+noremap <leader>r   :ElmRepl<cr>
+au BufWrite *.elm
+        \ execute 'ElmFormat'
 
 " CtrlP configuration
 let g:ctrlp_working_path_mode = ''              " don't like this feature
@@ -271,6 +282,7 @@ au! FileType scala      let b:comment = '//'
 au! FileType sh         let b:comment = '#'
 au! FileType treetop    let b:comment = '#'
 au! FileType vim        let b:comment = '"'
+au! FileType elm        let b:comment = '--'
 
 function! CommentOrUncomment() range
   if !exists("b:comment")
