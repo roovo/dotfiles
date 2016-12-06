@@ -140,6 +140,9 @@ noremap <leader>r   :ElmRepl<cr>
 au BufWrite *.elm
         \ execute 'ElmFormat'
 
+" scheme stuff
+let g:rainbow_active = 1
+
 " CtrlP configuration
 let g:ctrlp_working_path_mode = ''              " don't like this feature
 noremap <leader>gv :CtrlP app/views<cr>
