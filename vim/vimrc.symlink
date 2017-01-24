@@ -53,6 +53,7 @@ set smartcase                         " ...unless they contain at least one capi
 
 " Filesystem searching
 set wildignore=*.a,*.csv,*.gem,*.gif,*.jpg,*.o,*.obj,*.png,*.sql,**/elm-stuff,**/log,**/node_modules,**/tmp
+set path+=**                          " search recursively when using find command
 
 " Remember more commands and search history
 set history=1000
