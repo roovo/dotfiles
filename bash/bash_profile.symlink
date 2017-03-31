@@ -38,5 +38,4 @@ fi
 [[ -x /usr/local/src/dockerize/bin/dockerize ]] && eval "$(/usr/local/src/dockerize/bin/dockerize init -)"
 
 # set up rvm
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm # Load RVM into a shell session *as a function*
