@@ -34,8 +34,5 @@ if [[ $OS == 'linux' ]]; then
   fi
 fi
 
-# set up dockerize
-[[ -x /usr/local/src/dockerize/bin/dockerize ]] && eval "$(/usr/local/src/dockerize/bin/dockerize init -)"
-
 # set up rvm
 [[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm # Load RVM into a shell session *as a function*
