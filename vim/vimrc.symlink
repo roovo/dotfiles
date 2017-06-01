@@ -7,7 +7,8 @@ let g:airline_powerline_fonts = 1
 " Editor appearance
 set showtabline=2                     " Always show the tabline at the top of the window
 set ruler                             " Show the ruler at all times
-set number                            " Show line numbers...
+set relativenumber                    " Use relative line numbers
+set number                            " Show line numbers (in combination with relative line numbers - cewl)
 set numberwidth=5                     " ...with enough room for long files
 set background=dark                   " Set things up for a terminal with a dark background
 color rupert                          " Set the colorscheme
