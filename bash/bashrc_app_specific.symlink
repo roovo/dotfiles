@@ -27,6 +27,7 @@ export PATH=$PATH:$GOPATH/bin
 export        ORACLE_BASE=/usr/local/oracle
 export        ORACLE_HOME="$ORACLE_BASE/product/instantclient_64/11.2.0.4.0"
 export  DYLD_LIBRARY_PATH="$ORACLE_BASE/product/instantclient_64/11.2.0.4.0"
+export    LD_LIBRARY_PATH="$ORACLE_BASE/product/instantclient_64/11.2.0.4.0"
 export            SQLPATH="$ORACLE_BASE/product/instantclient_64/11.2.0.4.0"
 export          TNS_ADMIN="$ORACLE_BASE/network/admin"
 export               PATH=$PATH:$DYLD_LIBRARY_PATH
