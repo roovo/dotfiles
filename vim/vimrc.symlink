@@ -155,6 +155,7 @@ noremap <leader>gp :CtrlP public<cr>
 noremap <leader>gs :CtrlP spec<cr>
 noremap <leader>gf :CtrlP features<cr>
 noremap <leader>gg :topleft 100 :split Gemfile<cr>
+noremap <leader>gr :topleft 100 :split config/routes.rb<cr>
 noremap <leader>f :CtrlP<cr>
 map     <leader>F :CtrlP %%<cr>
 
