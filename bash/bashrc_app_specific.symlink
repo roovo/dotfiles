@@ -19,6 +19,9 @@ if type pyenv >/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# Cucumber -------------------------------------------------------
+export CUCUMBER_FORMAT=pretty
+
 # Go -------------------------------------------------------------
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
