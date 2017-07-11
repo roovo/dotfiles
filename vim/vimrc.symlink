@@ -52,7 +52,7 @@ set ignorecase                        " searches are case insensative...
 set smartcase                         " ...unless they contain at least one capital letter
 
 " Filesystem searching
-set wildignore=tags,*.a,*.csv,*.gem,*.gif,*.jpg,*.o,*.obj,*.png,*.sql,elm-stuff/**,log/**,node_modules/**,tmp/**
+set wildignore=tags,*.a,*.csv,*.gem,*.gif,*.jpg,*.o,*.obj,*.png,*.sql,deps/**,_build/**,**/elm\-stuff/**,log/**,**/node_modules/**,tmp/**
 set path+=**                          " search recursively when using find command
 
 " Remember more commands and search history
