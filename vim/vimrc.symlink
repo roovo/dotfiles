@@ -284,6 +284,8 @@ au! FileType c          let b:comment = '//'
 au! FileType cucumber   let b:comment = '#'
 au! FileType coffee     let b:comment = '#'
 au! FileType dockerfile let b:comment = '#'
+au! FileType elm        let b:comment = '--'
+au! FileType elixir     let b:comment = '#'
 au! FileType javascript let b:comment = '//'
 au! FileType ragel      let b:comment = '#'
 au! FileType ruby       let b:comment = '#'
@@ -292,7 +294,6 @@ au! FileType scheme     let b:comment = ';'
 au! FileType sh         let b:comment = '#'
 au! FileType treetop    let b:comment = '#'
 au! FileType vim        let b:comment = '"'
-au! FileType elm        let b:comment = '--'
 
 function! CommentOrUncomment() range
   if !exists("b:comment")
