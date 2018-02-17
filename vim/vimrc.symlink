@@ -41,9 +41,10 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 " Editing
 set backspace=start,indent,eol        " Allow backspacing over everything in insert mode
 set mousehide                         " Hide the mouse when typing
-set wildmode=list:longest             " Shell-like behaviour for command autocompletion
-set visualbell                        " Stop all that beeping already
+" set wildmode=list:longest             " Shell-like behaviour for command autocompletion
+set vb t_vb=                          " Stop all that beeping already
 set clipboard=unnamed                 " make copy/paste work with the mac clipboard
+set complete=.,w,b,u,t
 
 " Searching
 set hlsearch                          " highlight search matches...
@@ -53,7 +54,10 @@ set smartcase                         " ...unless they contain at least one capi
 
 " Filesystem searching
 set wildignore=tags,*.a,*.csv,*.gem,*.gif,*.jpg,*.o,*.obj,*.png,*.sql,**/deps/**,_build/**,**/elm\-stuff/**,log/**,**/node_modules/**,tmp/**
-set path+=**                          " search recursively when using find command
+set wildmode=full
+set wildmenu
+set path=**,./,app/**,features/**,spec/**,src/**    " search recursively when using find command
+set suffixesadd=.rb,.elm
 
 " Remember more commands and search history
 set history=1000
