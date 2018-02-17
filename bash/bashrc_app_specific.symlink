@@ -30,6 +30,9 @@ if type pyenv >/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# Erlang -------------------------------------------------------
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Cucumber -------------------------------------------------------
 export CUCUMBER_FORMAT=pretty
 
