@@ -1,5 +1,16 @@
 # vi: set ft=sh :
 
+# Ansible ------------------------------------------------------------
+alias aa="ansible --vault-password-file .vault"
+alias av="ansible-vault --vault-password-file .vault"
+alias agi="ansible-galaxy install -r requirements.yml -f"
+alias ap="agi; ansible-playbook -D --vault-password-file .vault"
+alias rap='agi; ansible-playbook -D'
+alias aas="aa -m setup -a 'gather_subset=network' all"
+alias avv="av view"     # vault - data bags
+alias ave="av edit"
+alias avc="av create"
+
 # Vim ------------------------------------------------------------
 alias rmswp='find . -name \*.swp -type f -print0 | xargs -0 rm -f'
 
