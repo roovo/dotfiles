@@ -113,7 +113,7 @@ shopt -s histappend                                         # append history
 shopt -s cmdhist                                            # multiline commands as single line in history
 export HISTCONTROL=ignoredups:erasedups                     # don't put duplicate commands in the history
 export HISTIGNORE="ls:cd:[bf]g:exit"                        # keep these out of history
-export HISTFILESIZE=10000                                   # loadsa history
+export HISTFILESIZE=100000                                  # loadsa history
 
 # Editors ----------------------------------------------------------
 # Terminal
