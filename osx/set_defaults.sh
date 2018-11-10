@@ -1,17 +1,10 @@
 # Sets some reasonable OS X defaults.
 #
-# stolen from:
-#  https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
-#  https://github.com/mathiasbynens/dotfiles/blob/master/.osx
-#
-# Run ./set-defaults.sh
+# > sudo ./set-defaults.sh
 
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
-
-# Show the ~/Library folder.
-chflags nohidden ~/Library
 
 # Disable opening and closing window animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
@@ -50,6 +43,12 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Finder: disable window animations and Get Info animations
 defaults write com.apple.finder DisableAllAnimations -bool true
 
+# Finder: disable animations when opening the Info window in finder
+defaults write com.apple.finder DisableAllAnimations -bool true
+
+# Finder: disable animations when opening Quick Look window
+defaults write -g QLPanelAnimationDuration -float 0
+
 # Finder: show hidden files by default
 # defaults write com.apple.finder AppleShowAllFiles -bool true
 
@@ -58,9 +57,6 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
-
-# Finder: allow text selection in Quick Look
-defaults write com.apple.finder QLEnableTextSelection -bool true
 
 # Display full POSIX path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
@@ -120,6 +116,9 @@ defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 
+# Disable the standard delay in redering a web page
+defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25
+
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
@@ -133,9 +132,6 @@ defaults write com.apple.mail DisableSendAnimations -bool true
 
 # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
-
-# Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
 
 ###############################################################################
 # Disk Utility                                                                #
